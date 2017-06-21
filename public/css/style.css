@@ -31,8 +31,16 @@ body {
   margin-top: 5px;
 }
 
+.stock-panel {
+  border-radius: 3px;
+}
+
 .stock-panel h3 {
   margin-top: 0.5%;
+}
+
+.stock-panel:hover {
+  border: 2px solid blue;
 }
 
 .chart-box {

@@ -5,6 +5,16 @@ var io = require('socket.io')(server);
 var fs = require('fs');
 var path = require('path');
 var Quandl = require("quandl");
+var Moment = require('moment');
+
+
+// Moment js date;
+let day = Moment().day();
+let month = Moment().month();
+let year = Moment().year();
+
+let todaysDate = year + "-" + month + "-" + day;
+
 
 
 // Stock Api module / config
@@ -36,10 +46,11 @@ io.on('connection', function (socket) {
 
   socket.on('request stock', function (data) {
     console.log(data, "this is tock");
+
     // api call using quandl with date config
     quandl.dataset({source: 'WIKI', table: data.stock}, {
-      start_date: "2015-06-30",
-      end_date: "2016-06-29",
+      start_date: "2016-06-30",
+      end_date: todaysDate,
       column_index: 4,
       order: "asc"
     }, function (err, response) {

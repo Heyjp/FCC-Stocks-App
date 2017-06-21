@@ -1,18 +1,42 @@
 var socket = io();
 
+console.log(moment.duration(1, 'month').valueOf());
+
 socket.on('receive stock', function (data) {
+  console.log(data, "this is data from receieve stock");
   return updateChart(data);
 })
 
 let chartConfig = {
-    rangeSelector: {
-        selected: 1
-    },
     title: {
-        text: 'AA'
+        text: 'Chart the Stock Market'
     },
-    series: []
-};
+    subtitle: {
+      text: "Enter in the stocks"
+    },
+    xAxis: {
+         type: 'datetime',
+         minTickInterval: moment.duration(1, 'month').valueOf(),
+         min: moment("2016-01-01").valueOf()
+   },
+   yAxis: {
+     title: "Value"
+   },
+   series: [{
+     name: "FB",
+     data: [["2016-07-07", 114], ["2017-05-05", 150]]
+   }],
+    navigator: {
+        xAxis: {
+            type: 'datetime',
+            min: moment("2016-01-01").valueOf(),
+            max: moment("2017-06-20").valueOf()
+          }
+    },
+   rangeSelector: {
+     enabled: true
+   }
+}
 
 // Create an empty stock chart for index.html
 function createChart (config) {
@@ -21,13 +45,18 @@ function createChart (config) {
 
 // Take response object and create an object ready to be pushed to chartConfig.
 function handleStockData (stock) {
+  let newStockData = stock.dataset.data.map(function (e) {
+    let date = moment(e[0], "YYYY/M/D").valueOf();
+    return [date, e[1]]
+  })
+  console.log(newStockData);
   // Create a new object and assign name & description for Highcharts object
   let newStock = {};
   newStock.name = stock.dataset.dataset_code;
-  newStock.data = stock.dataset.data;
+  newStock.data = newStockData;
+
   // Description for dom panel element
   newStock.description = stock.dataset.name;
-
   return newStock;
 }
 
@@ -91,6 +120,7 @@ function createNewStockPanel (object) {
 function addSeriesToChart (serie) {
   // Access the chart object on the dom
   let testChart = Highcharts.charts[0];
+  console.log(Highcharts.charts, "this is highcharts.charts");
   // Use Highcharts prototype to add new Series data
   testChart.addSeries(serie);
 }
