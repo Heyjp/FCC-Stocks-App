@@ -1,4 +1,4 @@
-# super-minimal-aurelia
+* # super-minimal-aurelia
 A barebones Aurelia + webpack2 build with decorators and async/await support
 
 This boilerplate is up to date as of April 13th, 2017, and incorporates the following:
@@ -8,7 +8,7 @@ This boilerplate is up to date as of April 13th, 2017, and incorporates the foll
 * Use of plain CSS (rather than SASS/LESS)
 * Fully working in all evergreen browsers AND Internet Explorer 11, 10, and 9!
 
-Here's all you need to get started. 
+Here's all you need to get started.
 
 **Step 1)** Install [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm), and then install [Yarn](https://yarnpkg.com) on your command line:
 

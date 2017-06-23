@@ -19,7 +19,11 @@
     "webpack-dev-server": "^2.4.1"
   },
   "dependencies": {
-    "aurelia-bootstrapper": "^2.1.1"
+    "aurelia-bootstrapper": "^2.1.1",
+    "bootstrap": "^3.3.7",
+    "highcharts": "^5.0.12",
+    "jquery": "^2.2.4",
+    "socket.io": "^2.0.3"
   },
   "scripts": {
     "web": "webpack-dev-server --hot --inline",

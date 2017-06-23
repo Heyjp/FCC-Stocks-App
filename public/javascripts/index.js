@@ -1,12 +1,5 @@
 var socket = io();
 
-console.log(moment.duration(1, 'month').valueOf());
-
-socket.on('receive stock', function (data) {
-  console.log(data, "this is data from receieve stock");
-  return updateChart(data);
-})
-
 let chartConfig = {
     title: {
         text: 'Chart the Stock Market'
@@ -49,7 +42,6 @@ function handleStockData (stock) {
     let date = moment(e[0], "YYYY/M/D").valueOf();
     return [date, e[1]]
   })
-  console.log(newStockData);
   // Create a new object and assign name & description for Highcharts object
   let newStock = {};
   newStock.name = stock.dataset.dataset_code;
@@ -65,7 +57,6 @@ function removeSeries (name) {
     // loop over chart.series objects, return index that matches series[i].name
 
     let stockChart = Highcharts.charts[0];
-    console.log(stockChart.series, "this is stockchart series");
 
     // Find the index of i and remove it from the stockChart Series
     let i = stockChart.series.map(function(e) { return e.name }).indexOf(name);
@@ -120,7 +111,6 @@ function createNewStockPanel (object) {
 function addSeriesToChart (serie) {
   // Access the chart object on the dom
   let testChart = Highcharts.charts[0];
-  console.log(Highcharts.charts, "this is highcharts.charts");
   // Use Highcharts prototype to add new Series data
   testChart.addSeries(serie);
 }
@@ -143,6 +133,5 @@ function handleSubmit (e) {
 
 // Wait till dom is finished loading before appending Highcarts chart
 document.addEventListener("DOMContentLoaded", function() {
-  console.log("Content Loaded");
   createChart(chartConfig);
 });

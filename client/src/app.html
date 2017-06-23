@@ -1,7 +1,21 @@
 <template>
-  <h2>Aurelia + Webpack</h2>
-  <nav>
-    Navigate to: <a route-href='route: hello'>Hello</a> | <a route-href='route: about'>About</a>
-  </nav>
-  <router-view></router-view>
+  <div id="cont">
+    <p>Some text</p>
+  </div>
+  <div>
+    <p>${friends} is here</p>
+    <div>
+      <div repeat.for="panel of panels">
+        <h2>${panel.name}</h2>
+        <p>${panel.description}</p>
+        <input type="submit" click.delegate="removeSeries(panel.name, $index)" />
+      </div>
+      <form submit.trigger="handleSubmit()">
+        <input type="text" value.bind="stock" placeholder="stock" />
+        <input type="submit"/>
+      </form>
+    </div>
+  </div>
+  <p>${header}</p>
+  <p>${content}</p>
 </template>

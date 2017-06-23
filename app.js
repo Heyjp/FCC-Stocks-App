@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var app = express();
 var server = require('http').Server(app);
@@ -7,15 +8,12 @@ var path = require('path');
 var Quandl = require("quandl");
 var Moment = require('moment');
 
-
 // Moment js date;
 let day = Moment().day();
 let month = Moment().month();
 let year = Moment().year();
 
 let todaysDate = year + "-" + month + "-" + day;
-
-
 
 // Stock Api module / config
 var quandl = new Quandl();
