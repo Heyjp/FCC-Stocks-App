@@ -41,14 +41,11 @@ export class MooseViewModel {
 
 
   constructor() {
-    this.header ="This is the header";
-    this.content = "This is the content";
-    this.friends = ["jane", "janet", "janice"]
     this.stock = "";
-
     this.panels = [];
   }
 
+  // Aurelia lifecycle event, allows access to dom to append chart
   activate () {
     let self = this;
     socket.on('receive stock', function (data) {
