@@ -4,7 +4,7 @@ import Highcharts from 'highcharts/highstock'
 import {bindable, inject} from 'aurelia-framework'
 import io from 'socket.io-client';
 
-let socket = io.connect(process.env.SEVER_ADDRESS);
+let socket = io.connect("https://stckr.herokuapp.com/");
 
 let chartConfig = {
     title: {
