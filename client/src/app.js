@@ -3,7 +3,7 @@ import moment from 'moment'
 import Highcharts from 'highcharts/highstock'
 import io from 'socket.io-client';
 
-let socket = io.connect("https://stckr.herokuapp.com/");
+let socket = io("https://stckr.herokuapp.com/");
 
 let chartConfig = {
     title: {
