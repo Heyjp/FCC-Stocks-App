@@ -4,7 +4,7 @@ import Highcharts from 'highcharts/highstock'
 import {bindable, inject} from 'aurelia-framework'
 import io from 'socket.io-client';
 
-let socket = io.connect('http://localhost:3000');
+let socket = io.connect(process.env.SEVER_ADDRESS);
 
 let chartConfig = {
     title: {
@@ -49,7 +49,6 @@ export class MooseViewModel {
   activate () {
     let self = this;
     socket.on('receive stock', function (data) {
-      console.log(data, "this is data from receive stock");
       return self.updateChart(data);
     })
   }
@@ -99,7 +98,6 @@ export class MooseViewModel {
   removeSeries (name, newNum) {
     // loop over chart.series objects, return index that matches series[i].name
     let stockChart = Highcharts.charts[0];
-    console.log(stockChart, "this is stockChart")
     // Find the index of i and remove it from the stockChart Series
     let i = stockChart.series.map(function(e) { return e.name }).indexOf(name);
     stockChart.series[i].remove();

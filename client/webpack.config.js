@@ -34,6 +34,7 @@ module.exports = {
           plugins: ['transform-class-properties', 'transform-decorators-legacy']
         }
       },
+  
       {
        // CSS required in JS/TS files should use the style-loader that auto-injects it into the website
        test: /\.css$/i,
@@ -62,6 +63,7 @@ module.exports = {
         Promise: 'core-js/es6/promise',
         regeneratorRuntime: 'regenerator-runtime' // to support await/async syntax
     }),
+
 
     // init aurelia-webpack-plugin
     new AureliaWebpackPlugin.AureliaPlugin(),

@@ -21,11 +21,11 @@ var options = require('./config/config.js');
 quandl.configure(options);
 
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/dist/')));
 
 app.get('/', function (req, res) {
 
-  fs.readFile(__dirname + '/public/index.html', function (err, data) {
+  fs.readFile(__dirname + '/public/dist/index.html', function (err, data) {
     if (err) {
       console.log(err);
     }
@@ -39,11 +39,9 @@ app.get('/', function (req, res) {
 
 
 io.on('connection', function (socket) {
-  console.log("connection has been made");
   // socket.emit('news', { hello: 'world' });
 
   socket.on('request stock', function (data) {
-    console.log(data, "this is tock");
 
     // api call using quandl with date config
     quandl.dataset({source: 'WIKI', table: data.stock}, {
