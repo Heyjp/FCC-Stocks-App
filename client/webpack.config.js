@@ -25,6 +25,7 @@ module.exports = {
   },
 
   module: {
+
     rules: [
       { test: /\.(js)$/,
         loaders: 'babel-loader',
@@ -34,7 +35,6 @@ module.exports = {
           plugins: ['transform-class-properties', 'transform-decorators-legacy']
         }
       },
-  
       {
        // CSS required in JS/TS files should use the style-loader that auto-injects it into the website
        test: /\.css$/i,
